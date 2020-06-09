@@ -1,0 +1,74 @@
+@import '../../styles/variables';
+
+.slider {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}
+
+.slider--content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+
+.slider--feature {
+    text-align: center;
+}
+
+.feature--title {
+    font-size: 2.5rem;
+    color: $light-font-color;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.feature--text {
+    font-size: 1rem;
+    color: $light-font-color;
+    margin: 1rem 0;
+}
+
+.slider__btn-right,
+.slider__btn-left {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 4rem;
+    color: $light-font-color;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+
+.feature__btn {
+    background: $quinary-color;
+    text-transform: uppercase;
+    border: none;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+    outline: none;
+    font-weight: 700;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+}
+
+.slider__btn-left:hover,
+.slider__btn-right:hover {
+    transform: scale(0.95);
+    }
+
+    @keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation: fadeIn 0.5s;
+}
