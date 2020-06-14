@@ -1,0 +1,25 @@
+@import "../../styles/variables";
+
+.item-card {
+    width: 150px;
+    height: 250px;
+    span {
+        position: relative;
+        top: -130px;
+    }
+    h3 {
+        font-size: 1.2em;
+    }
+}
+
+.image-container {
+    width: 150px;
+    height: 200px;
+    background-color: $tertiary-color;
+    img {
+        border-radius: 8px;
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+    }
+}
