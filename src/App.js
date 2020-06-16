@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Swiper from 'swiper'
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { connect } from 'react-redux'
+import { postTMDBConfig } from './actions/postTMDBConfigAction'
 
 import MainNav from './components/MainNav/MainNav'
 import Home from './components/Home/Home'
@@ -8,36 +9,10 @@ import Discover from './components/Discover/Discover'
 import UserProfile from './components/UserProfile/UserProfile'
 import Footer from './components/Footer/Footer'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 class App extends Component {
   componentDidMount() {
-    // eslint-disable-next-line
-    var mySwiper = new Swiper ('.swiper-container', {
-        slidesPerView: 6,
-        loop: true,
-        spaceBetween: 10,
-        observer: true,
-
-        breakpoints: {
-          1024: {
-            slidesPerView: 6
-          },
-          575: {
-            slidesPerView: 4
-          },
-          375: {
-            slidesPerView: 2
-          }
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }
-    })
+    this.props.postTMDBConfig(`https://api.themoviedb.org/3/configuration?api_key=${this.props.apiKey}`);
   }
   render(){
     return (
@@ -64,4 +39,12 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = state => ({
+  apiKey: state.postTMDBConfig.apiKey
+});
+
+const mapDispatcherToProps = dispatch => ({
+  postTMDBConfig: url => dispatch(postTMDBConfig(url))
+});
+
+export default connect(mapStateToProps, mapDispatcherToProps)(App);
